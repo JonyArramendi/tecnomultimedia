@@ -1,0 +1,18 @@
+	ENCUENTRA LAS BANDERAS
+
+REGLAS:  Al pulsar (click) sobre las celdas, 
+         aparecerá una bandera o una mina.
+         Si la celda seleccionada contiene 
+          una bandera el jugador 
+         automaticamente recibirá un puntos.
+         Si la celda seleccionada contiene una mina,
+         el jugador perdera.
+         El jugador ganará cuando llegue a encontrar 
+         4 banderas sin tocar una celda minada.
+         Finalizado el juego deberá presionar la tecla 
+         "R" o "r" para volver al menú principal.
+
+
+
+
+PRESIONA R PARA REGRESAR AL MENU PRINCIPAL
