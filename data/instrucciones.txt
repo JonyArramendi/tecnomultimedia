@@ -1,0 +1,17 @@
+	  INSTRUCCIONES
+
+MOVIMIENTOS
+
+→ tecla right
+← tecla left
+↓  tecla down
+↑  tecla up
+lanza martillo   tecla space
+
+OBJETIVO
+
+El objetivo principal es conseguir avanzar lateralmente hacia
+la derecha hasta llegar a la cueva donde se encuentra su
+princesa. Para ello, debera eliminar o esquivar los enemigos.
+
+PRESIONA R PARA REGRESAR AL MENU PRINCIPAL
