@@ -1,4 +1,5 @@
 class Personaje {
+  int pant=0;
   PImage img, img1;
   int posX, posY, x, y;
   int ancho, alto;
@@ -6,7 +7,11 @@ class Personaje {
   int topeSalto;
   boolean estaSaltando;
   int estaSaltandoDireccion;
+  boolean reboteX=true;
+  int dirX = 1;
+  int vel = 2;
   Martillo martillo;
+
   Personaje() {
     posX=50;
     posY=342;
@@ -14,7 +19,8 @@ class Personaje {
     topeSalto = posY - 50;
     ancho=30;
     alto=30;   
-    martillo=new Martillo(posX,posY);
+    martillo=new Martillo(posX, posY);
+
     img = loadImage("personaje1.png");
     img1 = loadImage("personaje2.png");
   }
@@ -26,6 +32,7 @@ class Personaje {
     image(img1, posX, posY, ancho, alto);
     calcularMovimiento();
   }
+
   void moverDerecha() {
     posX = posX + 5;
   }
@@ -39,7 +46,8 @@ class Personaje {
     posY = posY + 5;
   }
   void cambiopersonaje() {
-    if (frameCount%10==0) {
+
+    if (frameCount%5==0) {
       dibujarPersonaje1();
     } else {
       dibujarPersonaje2();
@@ -75,7 +83,9 @@ class Personaje {
       posY=posY+3;
       posX=posX+3;
     }
+  
   }
+  
   int posicionX() {
     return posX;
   }
@@ -85,6 +95,7 @@ class Personaje {
   }
 
   void atacar() {      
+
     martillo.condicionataque();
     martillo.nuevoataque();
     martillo.dibujarmartillo();
@@ -94,6 +105,20 @@ class Personaje {
     if (keyPressed && keyCode == 'r' ||keyPressed && keyCode == 'R' ) {
       posX=50;
       posY=342;
+      topePiso = posY;  
+      topeSalto = posY - 50;
     }
+  }
+  void cambiodenivel() {
+
+    posX=20;
+    posY=392;
+    topePiso = posY;  
+    topeSalto = posY - 50;
+  }
+
+
+  void caeagua() {
+    posY=posY+7;
   }
 }

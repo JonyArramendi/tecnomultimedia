@@ -9,6 +9,7 @@ class Credito {
   }
   void pantallacredito() {
     image(img, 0, 0, width, height);
+    texto_credito();
   }
  void texto_credito(){ 
     posY++;

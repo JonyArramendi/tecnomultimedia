@@ -2,7 +2,6 @@ class Martillo {
   int tam, cantmartillo, velmartillo;
   int martillox, martilloy;
   PImage img;
-
   boolean disparo;
   Martillo (int x, int y) {
     martillox = x;
@@ -31,7 +30,7 @@ class Martillo {
       disparo=false;
     }
   }
-   int posicionX() {
+  int posicionX() {
     return martillox;
   }
 

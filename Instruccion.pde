@@ -3,11 +3,12 @@ class Instruccion {
   int posX, posY;
   PImage img;  
   Instruccion() {
-    img = loadImage("instruccion.png");
+    img = loadImage("instruccion.jpg");
     lineas = loadStrings("instrucciones.txt");
   }
   void pantallainstruccion() {
     image(img, 0, 0, width, height);
+    texto_instrucciones();
   }
   void texto_instrucciones() {
     textSize(16);

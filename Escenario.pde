@@ -1,25 +1,36 @@
 class Escenario {
-  PImage img, img1,img2;
+  int pant=0;
+  PImage img, img2, img3;
+  PantallaDerrota derrota;
+  PantallaVictoria victoria;
+  Obstaculo obstaculo;
+  int cant=2;
   Escenario() {
     img = loadImage("escenario.png");
-    img1=loadImage ("perdiste.png");
-    img2=loadImage ("ganaste.png");
+    img2 =loadImage ("escenario2.png");
+    img3 =loadImage ("escenario3.png");
+    derrota=new PantallaDerrota();
+    victoria=new PantallaVictoria();
+    obstaculo=new Obstaculo();
   }
   void dibujarescenario() {
     image(img, 0, 0, 2000, height);
   }
-  void dibujarescenarioderrota() {
-    background(#FC080C);
-    image(img1, width/2, height/2, 250, 250);
-    fill(0);
-    textSize(24);
-    text ("PERDISTE.. PRESIONA R", 120, 50);
+  void escenarioderrota() {
+    derrota.dibujarescenarioderrota();
   }
-  void dibujarescenarioganar() {
-    background(#32D633);
-    image(img2, width/2, height/2, 250, 250);
-    fill(0);
-    textSize(24);
-    text ("GANASTE.. PRESIONA S", 120, 50);
+  void escenariovictoria() {
+    victoria.dibujarescenarioganar();
   }
+  void dibujarescenario2() {
+    background(#5187FA);
+    image(img2, 0, 0, width, height);
+  }
+  void dibujarescenario3(){
+    background(#5187FA);
+    
+    image(img3, 0, 0, width, height);
+  
+      
+    }
 }

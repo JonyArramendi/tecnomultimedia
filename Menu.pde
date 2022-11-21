@@ -1,11 +1,18 @@
 class Menu {
+  int pant=0;
   int posX, posY;
   PImage img;
 
+  Musica musica;
+  Credito credito;
+  Instruccion instruccion;
   Menu() {
     posX= 220;
     posY= 300;
     img = loadImage("logo.png");
+    credito =new Credito();
+    instruccion=new Instruccion();
+    musica=new Musica();
   }
   void dibujar_opciones() {
     fill (255);
@@ -31,5 +38,24 @@ class Menu {
       fill (#F4F5C3, 100);
       rect (posX-10, 388, 130, 16);
     }
+  }
+
+
+  void opciones() {
+
+    dibujarlogo();
+    dibujar_opciones();
+  }
+  void creditos() {
+
+    credito.pantallacredito();
+  }  
+  void instrucciones() {
+
+    instruccion.pantallainstruccion();
+  }
+  void reset_credito() {
+
+    credito.reset_credito();
   }
 }
