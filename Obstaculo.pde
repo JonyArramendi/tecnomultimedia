@@ -3,9 +3,9 @@ class Obstaculo{
   int  posY, ancho, alto, posX;
   int cant;
   boolean reboteX=true;
-  Obstaculo() {
+  Obstaculo(int i) {
     cant=2;
-    posX=round (random (100,400));
+    posX=round (random (100,400))+i;
     posY=392;
     ancho=40;
     alto=40;    

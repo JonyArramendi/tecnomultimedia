@@ -2,7 +2,7 @@ class Menu {
   int pant=0;
   int posX, posY;
   PImage img;
-
+  boolean jugando=false;
   Musica musica;
   Credito credito;
   Instruccion instruccion;
@@ -39,7 +39,7 @@ class Menu {
       rect (posX-10, 388, 130, 16);
     }
   }
-
+  
 
   void opciones() {
 

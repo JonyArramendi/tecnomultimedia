@@ -10,17 +10,13 @@ class Personaje {
   boolean reboteX=true;
   int dirX = 1;
   int vel = 2;
-  Martillo martillo;
-
   Personaje() {
     posX=50;
     posY=342;
     topePiso = posY;  
-    topeSalto = posY - 50;
+    topeSalto = posY - 40;
     ancho=30;
-    alto=30;   
-    martillo=new Martillo(posX, posY);
-
+    alto=30;      
     img = loadImage("personaje1.png");
     img1 = loadImage("personaje2.png");
   }
@@ -78,14 +74,13 @@ class Personaje {
       estaSaltando = false;
     } else if (estaSaltando && estaSaltandoDireccion == 1) {
       posY=posY-7;
-      posX=posX+5;
+      posX=posX+3;
     } else if (estaSaltando && estaSaltandoDireccion == -1) {
       posY=posY+3;
       posX=posX+3;
     }
-  
   }
-  
+
   int posicionX() {
     return posX;
   }
@@ -93,32 +88,24 @@ class Personaje {
   int posicionY() {
     return posY;
   }
-
-  void atacar() {      
-
-    martillo.condicionataque();
-    martillo.nuevoataque();
-    martillo.dibujarmartillo();
-    martillo.lanzarMartillo();
-  }
   void volverpersonaje() {
     if (keyPressed && keyCode == 'r' ||keyPressed && keyCode == 'R' ) {
       posX=50;
       posY=342;
       topePiso = posY;  
-      topeSalto = posY - 50;
+      topeSalto = posY - 40;
     }
   }
   void cambiodenivel() {
-
     posX=20;
     posY=392;
     topePiso = posY;  
-    topeSalto = posY - 50;
+    topeSalto = posY - 40;
   }
-
-
   void caeagua() {
-    posY=posY+7;
+    if (posicionX()> 85 && posicionX()<185 || 
+      posicionX()> 325 && posicionX()<430) {
+      posY=posY+7;
+    }
   }
 }

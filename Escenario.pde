@@ -11,7 +11,7 @@ class Escenario {
     img3 =loadImage ("escenario3.png");
     derrota=new PantallaDerrota();
     victoria=new PantallaVictoria();
-    obstaculo=new Obstaculo();
+
   }
   void dibujarescenario() {
     image(img, 0, 0, 2000, height);
