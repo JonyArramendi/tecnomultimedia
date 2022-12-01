@@ -11,7 +11,7 @@ class PantallaVictoria{
     image(img, 0, 0, width, height);
     fill(#10CB3A);
     textSize(24);
-    text ("GANASTE.. PRESIONA R", 120, 250);
+    text ("Ganaste.. Presiona R", 120, 250);
     gano=true;
   }
 }

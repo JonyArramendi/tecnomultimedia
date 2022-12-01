@@ -1,5 +1,5 @@
 class Juego {
-  int pant=0, cant=3, cantmart=100;
+  int pant=0, cant=2;
   boolean jugando=false;
   boolean colision=false;
   boolean perdio=false;
@@ -12,6 +12,8 @@ class Juego {
   Obstaculo obstaculo;
   Obstaculo [] obstaculos;
   Pulpo pulpo;
+  Tiempo tiempo;
+  Vida vida;
   Juego() {
     menu=new Menu(); 
     personaje=new Personaje();
@@ -19,10 +21,12 @@ class Juego {
     enemigo=new Enemigo();
     musica=new Musica(); 
     pulpo=new Pulpo();
+    vida=new Vida();
     obstaculos = new Obstaculo [cant];
     for (int i = 0; i < cant; i++) {
       obstaculos[i] = new Obstaculo(i);
     }
+    tiempo=new Tiempo();
   }
   void dibujar() {
     if (pant == 0 && jugando ==false) {
@@ -34,8 +38,10 @@ class Juego {
     if (pant == 2 && jugando ==false) {
       menu.instrucciones();
     }
-    if (pant == 3 && jugando ==true && colision==false) { 
+    if (pant == 3 && jugando ==true) { 
       pantallajuego();
+      tiempo();
+      vida.dibujarvida();
     }
     if (pant==4) {
       pantalladerrota();
@@ -45,13 +51,17 @@ class Juego {
     }
     if (pant==6&&jugando ==true) {
       nivel2();
+      tiempo();
     }
     if (pant==7&&jugando ==true) {
       nivelfinal();
+      tiempo();
     }
   }
   void pantallajuego() {     
     background(#5187FA);
+destruido();
+
     escenario.dibujarescenario();
     enemigo.sentidoenemigo();
     enemigo.moverenemigo();
@@ -66,17 +76,15 @@ class Juego {
   void colisioncaracol() {
     if (dist(enemigo.posicionX(), enemigo.posicionY(), personaje.posicionX(), personaje.posicionY()) <= 15) {
       colision = true;
-      pant=4;
-      musica.pararmusica(); 
-      musica.reproducirmusica2();
+      vida.descontarvida();
+     personaje.revive();
     }
   }
   void colisionpulpo() {
     if (dist(pulpo.posicionX(), pulpo.posicionY(), personaje.posicionX(), personaje.posicionY()) <= 15) { 
       colision = true;
-      pant=4;
-      musica.pararmusica(); 
-      musica.reproducirmusica2();
+      vida.descontarvida();
+      personaje.revive();
     }
   }
 
@@ -84,9 +92,8 @@ class Juego {
     for (int i = 0; i < cant; i++) {
       if (dist(obstaculos[i].posicionX(), obstaculos[i].posicionY(), personaje.posicionX(), personaje.posicionY()) <= 15) {
         colision = true;
-        pant=4;
-        musica.pararmusica(); 
-        musica.reproducirmusica2();
+        vida.descontarvida();
+        personaje.revive();
       }
     }
   }
@@ -99,8 +106,10 @@ class Juego {
     escenario.escenariovictoria();
   }
   void nivel2() {
+destruido();
     escenario.dibujarescenario2();     
-    personaje.cambiopersonaje();    
+    personaje.cambiopersonaje();  
+    vida.dibujarvida();
     personaje.caeagua();  
     pulpo.moverpulpo();
     pulpo.sentidopulpo();
@@ -115,9 +124,18 @@ class Juego {
       personaje.cambiodenivel();
     }
   }
+  void destruido() {
+    if (vida.vidarestante()==0) {
+      pant=4;
+      musica.pararmusica(); 
+      musica.reproducirmusica2();
+    }
+  }
   void nivelfinal() {
+destruido();
     escenario.dibujarescenario3();     
     personaje.cambiopersonaje();
+    vida.dibujarvida();
     colisionfuego();
     for (int i = 0; i < cant; i++) {
       obstaculos[i].dibujarobstaculos();
@@ -142,6 +160,25 @@ class Juego {
     }
   }
 
+  void tiempo() {
+    if (jugando==true) {
+      tiempo.dibujartiempo();
+      if (tiempo.contador>0) {
+        if (tiempo.contador<=20) {
+          tiempo.contadoradvierte();
+        }
+      } 
+      if (tiempo.contador<=10) {
+        tiempo.contadorporperder();
+      }
+      if (tiempo.contador==0) {
+        pant=4;
+        musica.pararmusica(); 
+        musica.reproducirmusica2();
+      }
+    }
+  }
+
   void reinicio() {
     if (key =='R' || key == 'r') {
       pant=0;
@@ -154,6 +191,8 @@ class Juego {
       colision=false;
       personaje.volverpersonaje();
       gano=false;
+      tiempo.tiempojuego=0;
+      vida.cantvida= 2;
     }
   }
 }

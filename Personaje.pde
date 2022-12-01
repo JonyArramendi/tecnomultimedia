@@ -73,11 +73,11 @@ class Personaje {
       estaSaltandoDireccion = 0;
       estaSaltando = false;
     } else if (estaSaltando && estaSaltandoDireccion == 1) {
-      posY=posY-7;
-      posX=posX+3;
+      posY=posY-10;
+      posX=posX+10;
     } else if (estaSaltando && estaSaltandoDireccion == -1) {
-      posY=posY+3;
-      posX=posX+3;
+      posY=posY+5;
+      posX=posX+7;
     }
   }
 
@@ -103,9 +103,12 @@ class Personaje {
     topeSalto = posY - 40;
   }
   void caeagua() {
-    if (posicionX()> 85 && posicionX()<185 || 
-      posicionX()> 325 && posicionX()<430) {
+    if (posicionX()> 95 && posicionX()<150 || 
+      posicionX()> 290 && posicionX()<392) {
       posY=posY+7;
     }
+  }
+  void revive() {
+    posX=20;
   }
 }

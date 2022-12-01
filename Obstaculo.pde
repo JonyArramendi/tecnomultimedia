@@ -4,7 +4,7 @@ class Obstaculo{
   int cant;
   boolean reboteX=true;
   Obstaculo(int i) {
-    cant=2;
+    cant=1;
     posX=round (random (100,400))+i;
     posY=392;
     ancho=40;

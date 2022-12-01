@@ -6,7 +6,7 @@ class Pulpo {
   int vel = 2;
   boolean reboteY=true;  boolean rebote1Y=true;
   Pulpo() {
-    pospulpoX=375;
+    pospulpoX=350;
     pospulpoY=400;
    
     ancho=30;
